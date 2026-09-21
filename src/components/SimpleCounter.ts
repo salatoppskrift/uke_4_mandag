@@ -2,6 +2,8 @@ export class SimpleCounter extends HTMLElement {
     private count = 0;
     private step = 1;
 
+    static observedAttributes = ["heading"];
+
     constructor() {
         super();
     }
@@ -9,6 +11,10 @@ export class SimpleCounter extends HTMLElement {
         this.count = Number(this.getAttribute("start-value") ?? 0);
         this.step = Number(this.getAttribute("step") ?? 1);
         this.render();
+    }
+
+    attributeChangedCallback() {
+
     }
     private render(): void {
         this.innerHTML = `<button>Antall: ${this.count}</button>`;
