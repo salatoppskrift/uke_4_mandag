@@ -71,3 +71,5 @@ export class FishieFish extends HTMLElement {
         // this.innerHTML = `<ul>${.join("")}</ul>`;
     }
 }
+
+type Mood = "content" | "hungry" | "stressed" | "joyous";
