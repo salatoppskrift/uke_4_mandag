@@ -3,7 +3,7 @@ export class NoteList extends HTMLElement {
 
     constructor() {
         super();
-        this.attachShadow({ mode: "open" });
+        this.attachShadow({ mode: "open" }); // Peter Pan!
     }
 
     connectedCallback(): void {
@@ -11,10 +11,11 @@ export class NoteList extends HTMLElement {
     }
 
     attributeChangedCallback(
-        _name: string,
+        name: string,
         oldValue: string | null,
         newValue: string | null
     ): void {
+        console.log(this.isConnected);
         if (oldValue !== newValue && this.isConnected) {
             this.render();
         }
@@ -30,5 +31,3 @@ export class NoteList extends HTMLElement {
             this.getAttribute("heading") ?? "Notater";
     }
 }
-
-customElements.define("note-list", NoteList);
