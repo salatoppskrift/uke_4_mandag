@@ -1,14 +1,14 @@
 export class SimpleCounter extends HTMLElement {
-    private count = 0;
+    private count = 0; // navngi ting, cache invalidation (story 4 another time) og off-by-one-errors (bomme m én): 3 vanskelige ting i programmering
     private step = 1;
 
-    static observedAttributes = ["start-value", "step"];
+    static observedAttributes = ["start-count", "step"];
 
     constructor() {
         super();
     }
     connectedCallback(): void {
-        this.count = Number(this.getAttribute("start-value") ?? 0);
+        this.count = Number(this.getAttribute("start-count") ?? 0);
         this.step = Number(this.getAttribute("step") ?? 1);
         this.render();
     }
@@ -18,9 +18,8 @@ export class SimpleCounter extends HTMLElement {
         oldValue: string | null,
         newValue: string | null
     ) {
-        console.log(name, oldValue, newValue);
-        // blir én endret, kalles dette attributechangedcallback to ganger, én til å beskrive gamle verdien, andre til å beskrive nye verdien. Endrer jeg verdiene til step og count på samme tid gir den meg kun utslag til de nye endringene, og gir meg ikke melding om de gamle propertisene sine verdier.
-        // selv om jeg endrer så endrer ikke objektene seg i det hele tatt. Jeg mottar melding om at det var *forsøk* på å endre.
+        if (name === "step") this.step = Number(newValue); // bim sala bim
+        if (name === "count") this.count = Number(newValue); // bim sala bim
     }
     private render(): void {
         this.innerHTML = `<button>Antall: ${this.count}</button>`;
