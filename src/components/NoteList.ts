@@ -22,8 +22,10 @@ export class NoteList extends HTMLElement {
     }
 
     private render(): void {
-        this.shadowRoot!.innerHTML = `
-            <style>h2 { color: steelblue; }</style>
+        this.shadowRoot!.innerHTML = /*HTML*/`
+            <style>
+                h2 { color: steelblue; }
+            </style>
             <h2></h2>
             <p>Her kommer listen.</p>
         `;

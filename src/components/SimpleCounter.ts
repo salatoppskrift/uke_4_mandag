@@ -6,6 +6,7 @@ export class SimpleCounter extends HTMLElement {
 
     constructor() {
         super();
+        // this.attachShadow({ mode: "open" }); // Peter Pan, vi syr på dette!
     }
     connectedCallback(): void {
         this.count = Number(this.getAttribute("count") ?? 0);
@@ -22,11 +23,23 @@ export class SimpleCounter extends HTMLElement {
     ) {
         if (name === "step") this.step = Number(newValue); // bim sala bim
         if (name === "count") this.count = Number(newValue); // bim sala bim
-        // prøvde en array.from-sak, funket ikke, ble for godt pakket i objekter kanskje.
         this.render();
     }
     private render(): void {
-        this.innerHTML = `<button>Antall: ${this.count}</button>`;
+        this.innerHTML = /*HTML*/`
+            <style>
+                button {
+                    border: 2px #9b9ba8 solid;
+                    color: #27272c;
+                    border-radius: 4px;
+                    filter: brightness(0.8) saturate(20) hue-rotate(90deg);
+                }
+                button:hover {
+                    cursor: pointer;
+                }
+            </style>
+            <button>Antall: ${this.count}</button>
+        `;
         this.querySelector("button")!.addEventListener("click", () => {
             this.count += this.step; // teller ikke dette som mutasjon? Hm, ikke problem siden dette er ikke ment å være en ren funksjon dette er en klassekomponent ikke funksjonskomponent ergo går dette fint?
             this.render();
