@@ -1,0 +1,22 @@
+#app {
+  div,
+  simple-counter {
+    display: block;
+
+    button {
+      margin: 1px 0;
+    }
+  }
+  hr {
+    border: none;
+    border-bottom: dashed maroon 2px;
+  }
+
+  .compButt {
+    filter: saturate(200) hue-rotate(190deg);
+  }
+
+  .classButt {
+    filter: saturate(100) hue-rotate(-70deg);
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "uke_4_mandag",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test":"vitest"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "dependencies": {
+    "jsdom": "^29.1.1",
+    "vitest": "^5.0.1"
+  }
+}
