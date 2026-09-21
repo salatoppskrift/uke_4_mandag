@@ -7,6 +7,7 @@ customElements.define("note-list", NoteList);
 const app = document.querySelector("#app")!;
 
 app.innerHTML = /*HTML */ `
+  <h2>Counter:</h2>
   <simple-counter count="1000" step="3"></simple-counter>
   <simple-counter></simple-counter>
   <simple-counter></simple-counter>
