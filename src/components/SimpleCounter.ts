@@ -13,6 +13,8 @@ export class SimpleCounter extends HTMLElement {
         this.render();
     }
 
+    // vi så litt på Can I use 0u0
+
     attributeChangedCallback(
         name: string,
         oldValue: string | null,
