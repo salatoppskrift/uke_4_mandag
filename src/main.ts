@@ -20,7 +20,7 @@ const app = document.querySelector("#app")!;
 //   -> undefined
 // notes.getAttribute("heading");
 //   -> "endri fra konsollien"
-//   // OK THEN!! Litt som dom-manipulering av style, mottar ingenting hvis jeg har stilert fra css style.color men hvis jeg har skrevet den m JS, DA mottar jeg string-verdien. All right!!!
+//   - OK THEN!! Litt som dom-manipulering av style, mottar ingenting hvis jeg har stilert fra css style.color men hvis jeg har skrevet den m JS, DA mottar jeg string-verdien. All right!!!
   
 
 app.innerHTML = /*HTML */ `
@@ -31,5 +31,5 @@ app.innerHTML = /*HTML */ `
   <hr>
   <note-list></note-list>
   <hr>
-  <fishie-fish></fishie-fish>
+  <fishie-fish hunger-start="40"></fishie-fish> <!--legg til prop-->
 `;
