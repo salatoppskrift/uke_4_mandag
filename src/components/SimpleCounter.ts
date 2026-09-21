@@ -2,7 +2,7 @@ export class SimpleCounter extends HTMLElement {
     private count = 0; // navngi ting, cache invalidation (story 4 another time) og off-by-one-errors (bomme m én): 3 vanskelige ting i programmering
     private step = 1;
 
-    static observedAttributes = ["count", "step"];
+    static observableAttributties = ["count", "step"]; // YUp M^være observedAttributes
 
     constructor() {
         super();
