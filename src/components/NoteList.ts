@@ -3,7 +3,7 @@ export class NoteList extends HTMLElement {
 
     constructor() {
         super();
-        // this.attachShadow({ mode: "open" }); // Peter Pan!
+        this.attachShadow({ mode: "open" }); // Peter Pan!
     }
 
     connectedCallback(): void {
@@ -22,14 +22,14 @@ export class NoteList extends HTMLElement {
     }
 
     private render(): void {
-        this.innerHTML = /*HTML*/`
+        this.shadowRoot!.innerHTML = /*HTML*/`
             <style>
                 h2 { color: steelblue; }
             </style>
             <h2></h2>
             <p>Her kommer listen.</p>
         `;
-        this.querySelector("h2")!.textContent =
+        this.shadowRoot!.querySelector("h2")!.textContent =
             this.getAttribute("heading") ?? "Notater";
     }
 }

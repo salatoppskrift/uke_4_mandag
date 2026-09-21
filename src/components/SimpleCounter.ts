@@ -6,7 +6,7 @@ export class SimpleCounter extends HTMLElement {
 
     constructor() {
         super();
-        // this.attachShadow({ mode: "open" }); // Peter Pan, vi syr på dette!
+        this.attachShadow({ mode: "open" }); // Peter Pan, vi syr på dette!
     }
     connectedCallback(): void {
         this.count = Number(this.getAttribute("count") ?? 0);
@@ -26,7 +26,7 @@ export class SimpleCounter extends HTMLElement {
         this.render();
     }
     private render(): void {
-        this.innerHTML = /*HTML*/`
+        this.shadowRoot!.innerHTML = /*HTML*/`
             <style>
                 * {
                     color: #c00e2c;
@@ -34,7 +34,7 @@ export class SimpleCounter extends HTMLElement {
             </style>
             <button>Antall: ${this.count}</button>
         `;
-        this.querySelector("button")!.addEventListener("click", () => {
+        this.shadowRoot!.querySelector("button")!.addEventListener("click", () => {
             this.count += this.step; // teller ikke dette som mutasjon? Hm, ikke problem siden dette er ikke ment å være en ren funksjon dette er en klassekomponent ikke funksjonskomponent ergo går dette fint?
             this.render();
         })

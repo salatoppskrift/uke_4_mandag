@@ -1,4 +1,4 @@
-import { SimpleCounter } from "./components/SimpleCounter2";
+import { SimpleCounter } from "./components/SimpleCounter";
 import { NoteList } from "./components/NoteList";
 
 customElements.define("simple-counter", SimpleCounter);
