@@ -2,13 +2,13 @@ export class SimpleCounter extends HTMLElement {
     private count = 0; // navngi ting, cache invalidation (story 4 another time) og off-by-one-errors (bomme m én): 3 vanskelige ting i programmering
     private step = 1;
 
-    static observedAttributes = ["start-count", "step"];
+    static observedAttributes = ["count", "step"];
 
     constructor() {
         super();
     }
     connectedCallback(): void {
-        this.count = Number(this.getAttribute("start-count") ?? 0);
+        this.count = Number(this.getAttribute("count") ?? 0);
         this.step = Number(this.getAttribute("step") ?? 1);
         this.render();
     }
@@ -20,6 +20,8 @@ export class SimpleCounter extends HTMLElement {
     ) {
         if (name === "step") this.step = Number(newValue); // bim sala bim
         if (name === "count") this.count = Number(newValue); // bim sala bim
+        // prøvde en array.from-sak, funket ikke, ble for godt pakket i objekter kanskje.
+        this.render();
     }
     private render(): void {
         this.innerHTML = `<button>Antall: ${this.count}</button>`;
